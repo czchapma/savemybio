@@ -1,0 +1,13 @@
+h1, h2 {
+  text-align: center;
+  margin-top: 50px!important;
+  margin-bottom: 50px!important;
+
+}
+
+#get_started {
+  margin: 0 auto;
+  width: 150px;
+  display: block;
+  margin-top: 50px;
+}
