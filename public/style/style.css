@@ -1,12 +1,12 @@
 body {
-  background-color: #8bbabb;
-  color : #464159;
+  color: #8bbabb;
+  background-color : #464159;
   font-family: 'Raleway', sans-serif;
 }
 
 button {
-  background-color: #464159;
-  color: #c7f0db;
+  background-color: #8bbabb;
+  color: #464159;
   border-color: #464159;
 }
 h1 {
@@ -24,16 +24,31 @@ h1 {
 }
 
 input, textarea{
-  background-color: #464159;
-  color: #c7f0db;
+  color: #464159;
+  background-color: #8bbabb;
 }
 
 ::placeholder {
-  color: #8bbabb;
+  color: #464159;
 }
 
 hr {
   background-color: #6c7b95;
   border-top: 4px dashed #8c8b8b;
   width: 300px;
-  margin-top: 45px;}
+  margin-top: 45px;
+}
+
+#bios {
+  margin-top: 100px;
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: #464159;
+  text-align: center;
+  font-size: 12px;
+}
