@@ -9,7 +9,7 @@ button {
   color: #c7f0db;
   border-color: #464159;
 }
-h1, h2 {
+h1 {
   text-align: center;
   margin-top: 50px!important;
   margin-bottom: 50px!important;
@@ -31,3 +31,9 @@ input, textarea{
 ::placeholder {
   color: #8bbabb;
 }
+
+hr {
+  background-color: #6c7b95;
+  border-top: 4px dashed #8c8b8b;
+  width: 300px;
+  margin-top: 45px;}

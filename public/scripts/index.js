@@ -1,8 +1,8 @@
 $(document).ready(function(){
 
-  // $('#bios').hide();
-  // $('#add-bio').hide();
-  // $('#add-bio-button').hide();
+  $('#bios').hide();
+  $('#add-bio').hide();
+  $('#add-bio-button').hide();
   $('#signout').click(function(event) {
     firebase.auth().signOut().then(function() {
       // Sign-out successful.
