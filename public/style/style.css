@@ -1,3 +1,14 @@
+body {
+  background-color: #8bbabb;
+  color : #464159;
+  font-family: 'Raleway', sans-serif;
+}
+
+button {
+  background-color: #464159;
+  color: #c7f0db;
+  border-color: #464159;
+}
 h1, h2 {
   text-align: center;
   margin-top: 50px!important;
@@ -5,9 +16,18 @@ h1, h2 {
 
 }
 
-#get_started {
+.centered_button  {
   margin: 0 auto;
   width: 150px;
   display: block;
   margin-top: 50px;
+}
+
+input, textarea{
+  background-color: #464159;
+  color: #c7f0db;
+}
+
+::placeholder {
+  color: #8bbabb;
 }

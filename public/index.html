@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link href="style/style.css" rel="stylesheet"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+    <link href="style/style.css" rel="stylesheet"/>
     <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -44,13 +45,9 @@
       <div class="welcome">
         <h1>Save My Bio</h1>
         <p>As a public speaker, you pour all your energy into your pitch and your presentation, but it's easy to lose track of your speaker bio. You craft and recraft the 100 character bio, only to find out your version from last year was better.  Repeat yourself no more! Save my bio has your back.</p>
-        <button id="get_started">Get Started</button>
-        <button id="add-bio-button">Add A New Bio</button>
+        <button class="centered_button" id="get_started">Get Started</button>
+        <button class="centered_button" id="add-bio-button">Add A New Bio</button>
 
-      </div>
-      <div id="bios">
-        <h1> Your Bios</h1>
-        <p id="placeholder-text">You haven't added any bios yet. To add a bio, click the button above.</p>
       </div>
       <div id="add-bio">
         <h1>Add New Bio</h1>
@@ -58,8 +55,12 @@
           <input name="event" type="text" id="event" placeholder="Event"/><br/>
           <input name="date" type="date" id="date" placeholder="Date"/><br/>
           <textarea name="bio" id="bio" rows="8" cols="80" placeholder="Bio"></textarea><br/>
-          <button id="submit" class="btn btn-primary">Submit</button>
+          <button id="submit">Submit</button>
         </form>
+      </div>
+      <div id="bios">
+        <h1> Your Bios</h1>
+        <p id="placeholder-text">You haven't added any bios yet. To add a bio, click the button above.</p>
       </div>
     </div>
   </body>

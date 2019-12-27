@@ -1,8 +1,8 @@
 $(document).ready(function(){
 
-  $('#bios').hide();
-  $('#add-bio').hide();
-  $('#add-bio-button').hide();
+  // $('#bios').hide();
+  // $('#add-bio').hide();
+  // $('#add-bio-button').hide();
   $('#signout').click(function(event) {
     firebase.auth().signOut().then(function() {
       // Sign-out successful.
@@ -22,12 +22,13 @@ $(document).ready(function(){
     console.log('bio: ' + bio);
     writeUserData(eventTitle, date, bio);
   });
+
+  $('#add-bio-button').click(function(event) {
+    $('#add-bio').show();
+  });
 });
 
 function writeUserData(eventName, eventDate, eventBio) {
-  while (!firebase.auth().currentUser) {
-    //Wait for user
-  }
   var user = firebase.auth().currentUser;
   if (user) {
     // User is signed in.
@@ -39,12 +40,20 @@ function writeUserData(eventName, eventDate, eventBio) {
       date: eventDate,
       bio : eventBio
     });
+    $('#add-bio').hide();
+    $('#event').val('');
+    $('#date').val('');
+    $('#bio').val('');
+    fetchBiosForUser();
   } else {
     console.log('not signed in');
   }
 }
 function fetchBiosForUser() {
   var userId = firebase.auth().currentUser.uid;
+  $('#bios').show();
+  $('#bios').empty();
+  $('#bios').append('<p id="placeholder-text">You have not added any bios yet. To add a bio, click the button above.</p>');
   return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
     snapshot.forEach(function(childSnapshot) {
         $('#placeholder-text').hide();
@@ -81,7 +90,6 @@ function login() {
 
     firebase.auth().onAuthStateChanged(function(user) {
     if (firebase.auth().currentUser) {
-      $('#bios').show();
       $('#get_started').hide();
       $('#add-bio-button').show();
       fetchBiosForUser();
