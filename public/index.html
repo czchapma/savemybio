@@ -13,7 +13,7 @@
     <!-- TODO: Add SDKs for Firebase products that you want to use
          https://firebase.google.com/docs/web/setup#available-libraries -->
     <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-firestore.js"></script>
 
@@ -41,10 +41,26 @@
   </head>
   <body>
     <div class="container">
-      <h1>Save My Bio</h1>
-      <p>As a public speaker, you pour all your energy into your pitch and your presentation, but it's easy to lose track of your speaker bio. You craft and recraft the 100 character bio, only to find out your version from last year was better.  Repeat yourself no more! Save my bio has your back.</p>
-      <button id="get_started">Get Started</button>
+      <div class="welcome">
+        <h1>Save My Bio</h1>
+        <p>As a public speaker, you pour all your energy into your pitch and your presentation, but it's easy to lose track of your speaker bio. You craft and recraft the 100 character bio, only to find out your version from last year was better.  Repeat yourself no more! Save my bio has your back.</p>
+        <button id="get_started">Get Started</button>
+        <button id="add-bio-button">Add A New Bio</button>
+
+      </div>
+      <div id="bios">
+        <h1> Your Bios</h1>
+        <p id="placeholder-text">You haven't added any bios yet. To add a bio, click the button above.</p>
+      </div>
+      <div id="add-bio">
+        <h1>Add New Bio</h1>
+        <form>
+          <input name="event" type="text" id="event" placeholder="Event"/><br/>
+          <input name="date" type="date" id="date" placeholder="Date"/><br/>
+          <textarea name="bio" id="bio" rows="8" cols="80" placeholder="Bio"></textarea><br/>
+          <button id="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
     </div>
-    <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
   </body>
 </html>

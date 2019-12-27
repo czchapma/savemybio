@@ -1,4 +1,8 @@
 $(document).ready(function(){
+
+  $('#bios').hide();
+  $('#add-bio').hide();
+  $('#add-bio-button').hide();
   $('#signout').click(function(event) {
     firebase.auth().signOut().then(function() {
       // Sign-out successful.
@@ -8,11 +12,22 @@ $(document).ready(function(){
   });
   $('#get_started').click(function(event) {
     login();
-    //window.location.href = 'addbio.html';
+  });
+
+  $('#submit').click(function(event) {
+    event.preventDefault();
+    var eventTitle = $('#event').val();
+    var date = $('#date').val();
+    var bio = $('#bio').val();
+    console.log('bio: ' + bio);
+    writeUserData(eventTitle, date, bio);
   });
 });
 
 function writeUserData(eventName, eventDate, eventBio) {
+  while (!firebase.auth().currentUser) {
+    //Wait for user
+  }
   var user = firebase.auth().currentUser;
   if (user) {
     // User is signed in.
@@ -28,18 +43,17 @@ function writeUserData(eventName, eventDate, eventBio) {
     console.log('not signed in');
   }
 }
-// function userHasBios(userId) {
-//   var userId = firebase.auth().currentUser.uid;
-// }
 function fetchBiosForUser() {
   var userId = firebase.auth().currentUser.uid;
   return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
     snapshot.forEach(function(childSnapshot) {
+        $('#placeholder-text').hide();
         var data = childSnapshot.val();
-        var event = data.event;
+        var eventName = data.event;
         var date = data.date;
         var bio = data.bio;
-        console.log('event ' + event + ", date: " + date + ", bio: " + bio);
+        console.log('event ' + eventName + ", date: " + date + ", bio: " + bio);
+        $('#bios').append('<h2>' + eventName + '</h2><p class="date">' + date + '</p><p class="bio">' + bio + '</p><hr/>');
       });
   });
 }
@@ -64,9 +78,13 @@ function login() {
 
     console.log('Successful login! User info: ' +  name);
 
+
     firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-      $(document).load('addbio.html');
+    if (firebase.auth().currentUser) {
+      $('#bios').show();
+      $('#get_started').hide();
+      $('#add-bio-button').show();
+      fetchBiosForUser();
     } else {
       // No user is signed in.
     }
