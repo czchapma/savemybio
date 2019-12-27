@@ -1,15 +1,7 @@
 $(document).ready(function(){
-
   $('#bios').hide();
   $('#add-bio').hide();
   $('#add-bio-button').hide();
-  $('#signout').click(function(event) {
-    firebase.auth().signOut().then(function() {
-      // Sign-out successful.
-    }).catch(function(error) {
-      // An error happened.
-    });
-  });
   $('#get_started').click(function(event) {
     login();
   });
@@ -19,7 +11,6 @@ $(document).ready(function(){
     var eventTitle = $('#event').val();
     var date = $('#date').val();
     var bio = $('#bio').val();
-    console.log('bio: ' + bio);
     writeUserData(eventTitle, date, bio);
   });
 
@@ -61,7 +52,6 @@ function fetchBiosForUser() {
         var eventName = data.event;
         var date = data.date;
         var bio = data.bio;
-        console.log('event ' + eventName + ", date: " + date + ", bio: " + bio);
         $('#bios').append('<h2>' + eventName + '</h2><p class="date">' + date + '</p><p class="bio">' + bio + '</p><hr/>');
       });
   });
@@ -73,21 +63,8 @@ function login() {
   firebase.auth().signInWithPopup(provider).then(function(result) {
     // This gives you a Google Access Token. You can use it to access the Google API.
     var token = result.credential.accessToken;
-    console.log('token: ' + token);
-
     // The signed-in user info.
     var user = result.user;
-    var name = user.displayName;
-    var email = user.email;
-    var photoUrl = user.photoURL;
-    var emailVerified = user.emailVerified;
-    var uid = user.uid;  // The user's ID, unique to the Firebase project. Do NOT use
-    // this value to authenticate with your backend server, if
-    // you have one. Use User.getToken() instead.
-
-    console.log('Successful login! User info: ' +  name);
-
-
     firebase.auth().onAuthStateChanged(function(user) {
     if (firebase.auth().currentUser) {
       $('#get_started').hide();
@@ -104,14 +81,5 @@ function login() {
     var errorMessage = error.message;
     console.log('errorCode: ' + errorCode);
     console.log('errorMessage: ' + errorMessage);
-    // The email of the user's account used.
-    var email = error.email;
-    console.log('email: ' + email);
-
-    // The firebase.auth.AuthCredential type that was used.
-    var credential = error.credential;
-    console.log('credential: ' + credential);
-
   });
-
  }

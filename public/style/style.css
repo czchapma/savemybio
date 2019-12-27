@@ -13,7 +13,6 @@ h1 {
   text-align: center;
   margin-top: 50px!important;
   margin-bottom: 50px!important;
-
 }
 
 .centered_button  {
@@ -41,14 +40,4 @@ hr {
 
 #bios {
   margin-top: 100px;
-}
-
-footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  color: #464159;
-  text-align: center;
-  font-size: 12px;
 }
